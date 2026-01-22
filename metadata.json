@@ -1,0 +1,8 @@
+
+{
+  "name": "Hamideddine Mouad Portfolio",
+  "description": "Portfolio de Développeur Web Full Stack pour Hamideddine Mouad. Expert en React, Node.js, Laravel et Analyse de Données.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
