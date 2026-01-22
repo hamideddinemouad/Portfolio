@@ -10,7 +10,8 @@ export const PERSONAL_INFO = {
   linkedin: "mouad-hamideddine",
   location: "Casablanca, Maroc",
   bio: "Développeur Full-Stack polyvalent avec une solide expérience en analyse de contenus et en marchés numériques. Actuellement en formation d'excellence à YouCode, je combine une expertise technique (React, Node.js, Laravel) avec une vision stratégique du produit.",
-  status: "Prêt pour de nouveaux défis technologiques"
+  status: "Prêt pour de nouveaux défis technologiques",
+  whatsapp_number : "+212637275511"
 };
 
 export const SOFT_SKILLS = [
