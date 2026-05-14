@@ -200,14 +200,6 @@ const App: React.FC = () => {
                     sizes="(max-width: 768px) 90vw, 420px"
                   />
                 </div>
-                <div className="absolute left-4 right-4 -bottom-5 rounded-[24px] border border-white/80 bg-white/92 backdrop-blur px-4 py-3 shadow-xl">
-                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
-                    Profil
-                  </p>
-                  <p className="mt-1 text-sm font-bold text-slate-900">
-                    Full-stack developer avec une approche produit claire.
-                  </p>
-                </div>
               </div>
             </div>
 
