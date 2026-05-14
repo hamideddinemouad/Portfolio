@@ -3,7 +3,19 @@ export interface Project {
   title: string;
   tech: string[];
   description: string;
-  link?: string;
+  links?: ProjectLink[];
+  api?: ProjectApi;
+}
+
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
+export interface ProjectApi {
+  baseUrl: string;
+  docsUrl?: string;
+  note?: string;
 }
 
 export interface Experience {

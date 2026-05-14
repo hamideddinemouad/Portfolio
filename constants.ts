@@ -47,14 +47,41 @@ export const EXPERIENCES: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
-    title: "FleetTrack",
-    tech: ["React", "Node.js", "Express", "Mongoose", "Jest", "Docker"],
-    description: "Solution SaaS de gestion de flotte permettant le suivi précis du kilométrage, de la consommation et de l'activité des chauffeurs."
+    title: "Blood Bank Management System",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Mongoose", "Tailwind CSS"],
+    description:
+      "Plateforme full-stack de gestion des dons de sang avec dashboards par role, mode demo rapide, suivi d'inventaire, demandes d'hopitaux et documentation Swagger.",
+    links: [
+      {
+        label: "Acceder au site",
+        url: "https://blood-management-bank-front.vercel.app",
+      },
+      {
+        label: "Voir le code",
+        url: "https://github.com/hamideddinemouad/blood-management-bank",
+      },
+    ],
+    api: {
+      baseUrl: "https://blood-management-bank-api.vercel.app",
+      docsUrl: "https://blood-management-bank-api.vercel.app/api/doc",
+      note: "Swagger JSON disponible sur /api/doc.json.",
+    },
   },
   {
-    title: "LocalMind",
-    tech: ["Laravel", "PostgreSQL", "Tailwind CSS", "Vanilla JS", "Blade"],
-    description: "Plateforme communautaire géolocalisée permettant d'obtenir des réponses d'utilisateurs à proximité immédiate."
+    title: "Swish CMS",
+    tech: ["Next.js", "TypeScript", "Nest.js", "PostgreSQL", "Tailwind CSS"],
+    description:
+      "CMS multi-tenant oriente produit avec onboarding, verification de sous-domaines, pages publiques par tenant et edition structuree entre contenu, design et structure.",
+    links: [
+      {
+        label: "Acceder au site",
+        url: "https://www.swish.ltd",
+      },
+      {
+        label: "Voir le code",
+        url: "https://github.com/hamideddinemouad/Swish-CMS",
+      },
+    ],
   }
 ];
 

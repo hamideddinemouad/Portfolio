@@ -27,12 +27,14 @@ import {
   LANGUAGES,
   SOFT_SKILLS,
 } from "./constants";
+import myImage from "./my-image.jpeg";
 
 type TechIconProps = { name: string; size?: string };
 
 const TechIcon = ({ name, size = "w-8 h-8" }: TechIconProps) => {
   const slugMap: Record<string, string> = {
     React: "react",
+    "Next.js": "nextdotjs",
     "Node.js": "nodedotjs",
     Express: "express",
     "Nest.js": "nestjs",
@@ -43,6 +45,7 @@ const TechIcon = ({ name, size = "w-8 h-8" }: TechIconProps) => {
     MongoDB: "mongodb",
     "Tailwind CSS": "tailwindcss",
     JavaScript: "javascript",
+    TypeScript: "typescript",
     HTML5: "html5",
     CSS3: "css3",
     Docker: "docker",
@@ -185,6 +188,29 @@ const App: React.FC = () => {
       <section id="about" className="pt-28 sm:pt-40 lg:pt-48 pb-16 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="space-y-7 sm:space-y-10 animate-in fade-in slide-in-from-left duration-1000">
+            <div className="lg:hidden">
+              <div className="relative max-w-sm mx-auto">
+                <div className="absolute -inset-4 bg-blue-100/70 rounded-[40px] blur-2xl opacity-70"></div>
+                <div className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-[linear-gradient(180deg,#f8fbff_0%,#eef4ff_100%)] shadow-2xl">
+                  <img
+                    src={myImage}
+                    alt="Hamideddine Mouad debout, bras croises"
+                    className="w-full h-[420px] object-cover object-top"
+                    loading="eager"
+                    sizes="(max-width: 768px) 90vw, 420px"
+                  />
+                </div>
+                <div className="absolute left-4 right-4 -bottom-5 rounded-[24px] border border-white/80 bg-white/92 backdrop-blur px-4 py-3 shadow-xl">
+                  <p className="text-[10px] font-black uppercase tracking-[0.25em] text-blue-600">
+                    Profil
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-slate-900">
+                    Full-stack developer avec une approche produit claire.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-[10px] font-black tracking-widest uppercase">
               <Activity className="w-3 h-3" /> Architecte de Solutions Digitales
             </div>
@@ -242,16 +268,24 @@ const App: React.FC = () => {
             </div>
           </div>
 
-          {/* Big skills panel (desktop only) */}
+          {/* Portrait panel (desktop only) */}
           <div className="relative group hidden lg:block">
-            <div className="absolute -inset-10 bg-blue-100/50 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-            <div className="relative aspect-square rounded-[60px] bg-slate-50 border-8 border-white shadow-2xl overflow-hidden p-8 flex items-center justify-center">
-              <div className="grid grid-cols-4 gap-8">
-                {SKILLS.flatMap((cat) => cat.skills.slice(0, 4)).map((s, i) => (
-                  <div key={i} className="animate-pulse" style={{ animationDelay: `${i * 200}ms` }}>
-                    <TechIcon name={s} size="w-10 h-10" />
-                  </div>
-                ))}
+            <div className="absolute -inset-10 bg-blue-100/50 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+            <div className="relative rounded-[60px] bg-[linear-gradient(180deg,#f8fbff_0%,#eef4ff_100%)] border-8 border-white shadow-2xl overflow-hidden p-6">
+              <div className="relative overflow-hidden rounded-[40px] border border-slate-200 bg-white">
+                <img
+                  src={myImage}
+                  alt="Hamideddine Mouad debout, bras croises"
+                  className="w-full h-[640px] object-cover object-top"
+                  loading="eager"
+                  sizes="(min-width: 1024px) 38vw, 100vw"
+                />
+              </div>
+
+              <div className="absolute top-12 left-12 rounded-full border border-white/80 bg-white/92 px-4 py-2 shadow-lg backdrop-blur">
+                <span className="text-[10px] font-black uppercase tracking-[0.28em] text-blue-600">
+                  Disponible
+                </span>
               </div>
             </div>
           </div>
@@ -306,6 +340,69 @@ const App: React.FC = () => {
               <p className="text-slate-500 font-medium mb-8 sm:mb-12 leading-relaxed text-base sm:text-lg">
                 {project.description}
               </p>
+
+              {project.links?.length ? (
+                <div className="flex flex-wrap gap-3 mb-8 sm:mb-10">
+                  {project.links.map((link, linkIdx) => {
+                    const isGithubLink = link.label.toLowerCase().includes("code");
+
+                    return (
+                      <a
+                        key={linkIdx}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-50 border border-slate-200 text-slate-700 text-[11px] font-black uppercase tracking-widest hover:border-blue-500/30 hover:text-blue-600 transition-all"
+                      >
+                        {isGithubLink ? (
+                          <Github className="w-4 h-4" />
+                        ) : (
+                          <Globe className="w-4 h-4" />
+                        )}
+                        {link.label}
+                      </a>
+                    );
+                  })}
+                </div>
+              ) : null}
+
+              {project.api ? (
+                <div className="mb-8 sm:mb-10 p-5 sm:p-6 rounded-[28px] bg-slate-50 border border-slate-100 space-y-4">
+                  <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-blue-600">
+                    <Terminal className="w-4 h-4" />
+                    API Exposee
+                  </div>
+
+                  <div className="space-y-3">
+                    <a
+                      href={project.api.baseUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm sm:text-base font-bold text-slate-900 break-all hover:text-blue-600 transition-colors"
+                    >
+                      {project.api.baseUrl}
+                    </a>
+
+                    {project.api.docsUrl ? (
+                      <a
+                        href={project.api.docsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-600 transition-colors"
+                      >
+                        <Globe className="w-4 h-4" />
+                        Documentation Swagger
+                      </a>
+                    ) : null}
+                  </div>
+
+                  {project.api.note ? (
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                      {project.api.note}
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
 
               <div className="mt-auto flex flex-wrap gap-4 sm:gap-6 pt-8 sm:pt-10 border-t border-slate-50">
                 {project.tech.map((t: string, i: number) => (
@@ -479,16 +576,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* CTA flottant (mobile) */}
-      <div className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-40 flex flex-col gap-3">
-        <a
-          href={`https://wa.me/${PERSONAL_INFO.whatsapp_number}`}
-          className="w-14 h-14 rounded-3xl bg-green-500 text-white flex items-center justify-center shadow-2xl shadow-green-500/25 hover:scale-105 active:scale-95 transition"
-          aria-label="WhatsApp"
-        >
-          <MessageCircle className="w-7 h-7" />
-        </a>
-      </div>
     </div>
   );
 };
